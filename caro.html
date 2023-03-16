@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>caro</title>
+</head>
+<body>
+<h3>Caro Game Simple</h3>
+<p id="carogame"></p>
+<input value="click" type="button" onclick="changeValue()">
+<br>
+
+</body>
+<script>
+
+    let board = []
+    for (let i = 0; i < 10; i++) {
+        board[i] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        document.getElementById("carogame").innerHTML += board[i].join('&nbsp&nbsp&nbsp') + "<br>"
+    }
+
+    function changeValue() {
+        let x = +prompt("nhập vào tọa độ x")
+        let y = +prompt("nhập vào tọa độ y")
+        board[x][y] = 'x'
+        document.getElementById("carogame").innerHTML = ''
+        for (let j = 0; j < 10; j++) {
+            document.getElementById("carogame").innerHTML += board[j].join('&nbsp&nbsp&nbsp') + "<br>"
+        }
+    }
+</script>
+</html>
