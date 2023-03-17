@@ -14,18 +14,35 @@
 <script>
 
     let board = []
+    let count=1
     for (let i = 0; i < 10; i++) {
-        board[i] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        board[i] = ['(.)','(.)','(.)','(.)','(.)','(.)','(.)','(.)','(.)','(.)'];
         document.getElementById("carogame").innerHTML += board[i].join('&nbsp&nbsp&nbsp') + "<br>"
     }
 
     function changeValue() {
         let x = +prompt("nhập vào tọa độ x")
         let y = +prompt("nhập vào tọa độ y")
-        board[x][y] = 'x'
+        if(count%2===0){
+        board[x][y] ='o'
+        }else {
+            board[x][y]='x'
+        }
+        count++
         document.getElementById("carogame").innerHTML = ''
         for (let j = 0; j < 10; j++) {
             document.getElementById("carogame").innerHTML += board[j].join('&nbsp&nbsp&nbsp') + "<br>"
+        }
+        for(let i=0; i<10; i++){
+            for (let j=0; j<10; j++){
+                if ((board[i][j] === 'o' && board[i+1][j+1] === 'o' && board[i+2][j+2] === 'o') ||
+                    (board[i][j] === 'o' && board[i][j+1] === 'o' && board[i][j+2] === 'o')||(board[i][j] === 'o' && board[i+1][j+1] === 'o' && board[i+2][j+2] === 'o')){
+                    alert("o Thắng");
+                }else if(board[i][j] === 'x' && board[i+1][j+1] === 'x' && board[i+2][j+2] === 'x' ||
+                    board[i][j] === 'x' && board[i][j+1] === 'x' && board[i][j+2] === 'x'){
+                    alert("x Thắng");
+                }
+            }
         }
     }
 </script>
